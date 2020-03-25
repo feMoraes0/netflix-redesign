@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:netflixapp/components/drawer_custom.dart';
+import 'package:netflixapp/tabs/shows.dart';
 
 class Home extends StatelessWidget {
 
@@ -25,9 +26,7 @@ class Home extends StatelessWidget {
         body: SafeArea(
           child: TabBarView(
             children: [
-              Container(
-                color: Colors.red,
-              ),
+              Shows(),
               Icon(Icons.directions_transit),
               Icon(Icons.directions_bike),
             ],
