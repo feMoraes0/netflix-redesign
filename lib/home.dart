@@ -3,7 +3,6 @@ import 'package:netflixapp/components/drawer_custom.dart';
 import 'package:netflixapp/tabs/shows.dart';
 
 class Home extends StatelessWidget {
-
   @override
   Widget build(BuildContext context) {
     ThemeData theme = Theme.of(context);
@@ -11,6 +10,7 @@ class Home extends StatelessWidget {
     return DefaultTabController(
       length: 3,
       child: Scaffold(
+        backgroundColor: theme.backgroundColor,
         appBar: AppBar(
           actions: <Widget>[
             Padding(
@@ -42,7 +42,7 @@ class Home extends StatelessWidget {
             children: <Widget>[
               Container(
                 height: 75.0,
-                width: screen.width - 70.0,
+                width: screen.width - 80.0,
                 child: TabBar(
                   indicatorColor: theme.backgroundColor,
                   tabs: [
@@ -73,8 +73,8 @@ class Home extends StatelessWidget {
                   ],
                 ),
               ),
-              Padding(
-                padding: EdgeInsets.only(right: 20.0),
+              Container(
+                width: 80.0,
                 child: IconButton(
                   onPressed: () {},
                   icon: Icon(
