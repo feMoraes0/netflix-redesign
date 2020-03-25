@@ -12,6 +12,13 @@ class Shows extends StatelessWidget {
     {'name': 'The Last Summer', 'cover': 'images/trailer/trailer-005.jpeg'},
   ];
 
+  final List<Map> mains = [
+    {'label': '96% Match', 'cover': 'images/main/main-001.jpg'},
+    {'label': '99% Match', 'cover': 'images/main/main-002.jpg'},
+    {'label': '93% Match', 'cover': 'images/main/main-003.jpg'},
+    {'label': '95% Match', 'cover': 'images/main/main-004.jpg'},
+  ];
+
   final List<Map> watching = [
     {
       'name': 'Outlaw King',
@@ -61,8 +68,62 @@ class Shows extends StatelessWidget {
         color: theme.backgroundColor,
         child: ListView(
           children: <Widget>[
-            Text('Hello'),
-            Padding(
+            Container(
+              height: screen.height * 0.80,
+              child: PageView.builder(
+                controller: PageController(
+                  viewportFraction: 0.90,
+                  initialPage: 1,
+                ),
+                itemCount: this.mains.length,
+                itemBuilder: (context, index) {
+                  Map element = this.mains[index];
+                  return Container(
+                    padding: const EdgeInsets.symmetric(
+                      vertical: 20.0,
+                      horizontal: 10.0,
+                    ),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: <Widget>[
+                        Container(
+                          height: screen.height * 0.71,
+                          width: screen.width,
+                          decoration: BoxDecoration(
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.black,
+                                offset: Offset(6.0, 6.0),
+                                blurRadius: 10.0,
+                              )
+                            ],
+                            image: DecorationImage(
+                              image: AssetImage(element['cover']),
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                          child: Center(
+                            child: Text(
+                              index.toString(),
+                            ),
+                          ),
+                        ),
+                        Text(
+                          element['label'],
+                          style: TextStyle(
+                            fontSize: 18.0,
+                            fontWeight: FontWeight.w300,
+                            color: Colors.white,
+                          ),
+                        )
+                      ],
+                    ),
+                  );
+                },
+              ),
+            ),
+            Container(
+              margin: const EdgeInsets.only(top: 35.0),
               padding: EdgeInsets.only(
                 left: 20.0,
                 bottom: 10.0,
