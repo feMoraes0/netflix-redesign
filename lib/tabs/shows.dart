@@ -13,8 +13,8 @@ class Shows extends StatelessWidget {
   ];
 
   final List<Map> mains = [
-    {'label': '96% Match', 'cover': 'images/main/main-001.jpg'},
-    {'label': '99% Match', 'cover': 'images/main/main-002.jpg'},
+    {'label': '96% Match', 'cover': 'images/main/main-002.jpg'},
+    {'label': '99% Match', 'cover': 'images/main/main-001.jpg'},
     {'label': '93% Match', 'cover': 'images/main/main-003.jpg'},
     {'label': '95% Match', 'cover': 'images/main/main-004.jpg'},
   ];
@@ -92,10 +92,10 @@ class Shows extends StatelessWidget {
                           decoration: BoxDecoration(
                             boxShadow: [
                               BoxShadow(
-                                color: Colors.black,
+                                color: Colors.black87,
                                 offset: Offset(6.0, 6.0),
                                 blurRadius: 10.0,
-                              )
+                              ),
                             ],
                             image: DecorationImage(
                               image: AssetImage(element['cover']),

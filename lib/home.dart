@@ -2,7 +2,26 @@ import 'package:flutter/material.dart';
 import 'package:netflixapp/components/drawer_custom.dart';
 import 'package:netflixapp/tabs/shows.dart';
 
-class Home extends StatelessWidget {
+class Home extends StatefulWidget {
+  @override
+  _HomeState createState() => _HomeState();
+}
+
+class _HomeState extends State<Home> {
+  int index;
+
+  @override
+  void initState() {
+    this.index = 0;
+    super.initState();
+  }
+
+  void goToPage(int page) {
+    setState(() {
+      this.index = page;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     ThemeData theme = Theme.of(context);
@@ -25,6 +44,7 @@ class Home extends StatelessWidget {
         drawer: DrawerCustom(),
         body: SafeArea(
           child: TabBarView(
+            physics: NeverScrollableScrollPhysics(),
             children: [
               Shows(),
               Icon(Icons.directions_transit),
@@ -35,7 +55,7 @@ class Home extends StatelessWidget {
         bottomNavigationBar: Container(
           padding: EdgeInsets.all(0.0),
           color: theme.backgroundColor,
-          height: 75.0,
+          height: 80.0,
           width: screen.width,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -44,13 +64,14 @@ class Home extends StatelessWidget {
                 height: 75.0,
                 width: screen.width - 80.0,
                 child: TabBar(
-                  indicatorColor: theme.backgroundColor,
+                  indicatorColor: Colors.transparent,
+                  onTap: this.goToPage,
                   tabs: [
                     Tab(
                       child: Text(
                         "TV Shows",
                         style: TextStyle(
-                          fontSize: 17.0,
+                          fontSize: (this.index == 0) ? 17.0 : 15.0,
                         ),
                       ),
                     ),
@@ -58,15 +79,16 @@ class Home extends StatelessWidget {
                       child: Text(
                         "Movies",
                         style: TextStyle(
-                          fontSize: 15.0,
+                          fontSize: (this.index == 1) ? 17.0 : 15.0,
                         ),
                       ),
                     ),
                     Tab(
+                      
                       child: Text(
                         "My List",
                         style: TextStyle(
-                          fontSize: 15.0,
+                          fontSize: (this.index == 2) ? 17.0 : 15.0,
                         ),
                       ),
                     ),
